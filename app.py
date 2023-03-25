@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-
+import argparse
 import gradio as gr
 import torch
 
@@ -49,7 +49,11 @@ def show_warning(warning_text: str) -> gr.Blocks:
             gr.Markdown(warning_text)
     return demo
 
-
+parser = argparse.ArgumentParser()
+parser.add_argument(
+        "-s", "--share", help="Shareable link", action="store_true", default=False
+    )
+args = parser.parse_args()
 pipe = InferencePipeline(HF_TOKEN)
 trainer = Trainer(HF_TOKEN)
 
@@ -72,5 +76,8 @@ with gr.Blocks(css='style.css') as demo:
             - You can use this tab to upload models later if you choose not to upload models in training time or if upload in training time failed.
             ''')
             create_upload_demo(HF_TOKEN)
+if args.share:
+    demo.queue(max_size=1).launch(share=True)
+else:
+     demo.queue(max_size=1).launch(share=False)
 
-demo.queue(max_size=1).launch(share=False)
