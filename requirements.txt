@@ -1,0 +1,14 @@
+accelerate==0.15.0
+bitsandbytes==0.36.0.post2
+datasets==2.8.0
+git+https://github.com/huggingface/diffusers@31be42209ddfdb69d9640a777b32e9b5c6259bf0#egg=diffusers
+ftfy==6.1.1
+gradio==3.16.2
+huggingface-hub==0.12.0
+Pillow==9.4.0
+python-slugify==7.0.0
+tensorboard==2.11.2
+torch==1.13.1
+torchvision==0.14.1
+transformers==4.26.0
+wandb==0.13.9
